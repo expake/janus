@@ -35,10 +35,9 @@ RUN cd /root/janus-gateway \
     && make CFLAGS='-std=c99' \
     && make install \
     && make configs \
-    && ln -s /opt/janus/bin/janus /bin/janus \
     && cd /root/ \
     && rm -rf libnice libwebsockets v2.2.0.tar.gz libsrtp-2.2.0
 COPY conf/*.cfg /opt/janus/etc/janus/
-EXPOSE 80 7088 8088 8188 8089
+EXPOSE 7088 8088 8188 8089
 EXPOSE 10000-10200/udp
-CMD /opt/janus/bin/janus --nat-1-1=${DOCKER_IP}
+CMD /opt/janus/bin/janus
